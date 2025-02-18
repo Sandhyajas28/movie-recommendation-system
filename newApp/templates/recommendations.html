@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Movies</title>
+    <style>
+        body {
+          background: linear-gradient(45deg, #FC466B, #3F5EFB);
+          height: 100vh;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+          position: absolute;
+          transform: translate(-50%,-50%);
+          top: 50%;
+          left: 50%;
+          text-align: center;
+          background: rgba(255,255,255,0.3);
+          padding: 3em;
+          border-radius: 20px;
+          border-left: 1px solid rgba(255,255,255,0.3);
+          border-top: 1px solid rgba(255,255,255,0.3);
+          backdrop-filter: blur(10px);
+          box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
+          transition: all 0.2s ease-in-out;
+        }
+
+        h1 {
+          font-weight: 500;
+          color: #fff;
+          opacity: 0.7;
+          font-size: 2rem;
+          margin-top: 0;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        p {
+          font-weight: 500;
+          color: #fff;
+          opacity: 0.7;
+          font-size: 1.4rem;
+          margin-top: 0;
+          margin-bottom: 60px;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+
+        table, th, td {
+          border: 1px solid #fff;
+        }
+
+        th, td {
+          padding: 10px;
+          text-align: center;
+          color: #fff;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        a {
+          text-decoration: none;
+          color: #ddd;
+          font-size: 1rem;
+          margin-top: 20px;
+          display: inline-block;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        a:hover {
+          text-shadow: 2px 2px 6px #00000040;
+        }
+
+        a:active {
+          text-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recommended Movies for Genre: {{ genre }}</h1>
+        <p>You selected: {{ selected_movie }}</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Recommended Movies</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in recommended_movies %}
+                    <tr>
+                        <td>{{ movie }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'newDisplay' %}">Choose another movie</a>
+    </div>
+</body>
+</html>
